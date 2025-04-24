@@ -1,0 +1,13 @@
+telegram:
+  bot_token: ${TELEGRAM_BOT_TOKEN}
+mongodb:
+  uri: ${MONGODB_URI}
+google:
+  project_id: ${GOOGLE_CLOUD_PROJECT}
+  api_key: ${GOOGLE_API_KEY}
+  credentials: ${GOOGLE_APPLICATION_CREDENTIALS}
+gemini:
+  api_key: ${GEMINI_API_KEY}
+  model: gemini-1.5-flash
+flask:
+  api_url: ${FLASK_API_URL}
