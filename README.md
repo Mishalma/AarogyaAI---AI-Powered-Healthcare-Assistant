@@ -1,226 +1,266 @@
-AarogyaAI: AI-Powered Healthcare Assistant🩺
-Overview
-AarogyaAI is a Telegram bot designed to democratize healthcare access in India by providing personalized health services in 22 Indian languages through voice and text inputs. It enables users to upload medical reports, receive tailored diet plans, understand medicine usage instructions, and access predictive health risk assessments based on lifestyle, genetic, and medical data. Built with a focus on inclusivity, AarogyaAI promotes health equity for rural and underserved communities, aligning with SDG 3 (Good Health and Well-Being).
-Key features include:
 
-🌟 Features
-🔤 Multilingual Support: Processes queries and delivers responses in 22 Indian languages using Google Cloud Translate.
+# AarogyaAI: AI-Powered Healthcare Assistant 🩺
 
-🧾 Medical Report Analysis: Extracts data from uploaded prescriptions or reports (PDF/image) via OCR to generate personalized insights.
+## Overview
+**AarogyaAI** is a multilingual AI-powered Telegram bot designed to democratize access to healthcare in India. It supports **22 Indian languages** via voice and text, enabling users to:
 
-🍱 AI-Generated Diet Plans: Crafts 7-day, condition-specific meal plans (e.g., for diabetes) using Google Gemini API—localized to regional cuisine.
+- Upload medical reports for insights  
+- Receive personalized, regional diet plans  
+- Understand medication usage  
+- Get predictive health risk analysis (WIP)  
 
-💊 Medicine Usage Guidance: Provides clear, contextual instructions for prescription adherence in native languages.
+Built with a mission to promote **health equity**, especially in rural and underserved communities, **AarogyaAI** aligns with **SDG 3 – Good Health and Well-Being**.
 
-🔮 Predictive Health Risk Analysis (WIP): Assesses future risks based on lifestyle, genetic, and historical medical data.
+---
 
-🔒 Robust Backend: Built on MongoDB with TTL indexing, logging, and error-handling for secure, efficient data flow.
+## 🌟 Features
 
-🎯 SDG 3 Compliant: Empowers marginalized communities, promoting Good Health and Well-Being.
+- 🔤 **Multilingual Support**  
+  Powered by Google Cloud Translate, supports 22 Indian languages.
 
+- 🧾 **Medical Report Analysis**  
+  Extracts key data from uploaded reports (PDF/images) via OCR.
 
-Tech Stack
+- 🍱 **AI-Generated Diet Plans**  
+  Google Gemini-based condition-specific 7-day meal plans, localized to regional cuisine.
 
-Programming Language: Python 3.8+
-Framework: python-telegram-bot
-AI/ML: Google Gemini API (for diet plan generation and predictive analysis)
-Database: MongoDB (user profiles, interactions, prompt caching)
-Localization: Google Cloud Translate, Google Cloud Text-to-Speech
-Document Processing: Tesseract OCR, pdf2image, ReportLab (PDF generation)
-HTTP Client: httpx
-Workflow Automation: n8n (backup messaging)
-Fonts: Noto Sans Malayalam (for localized PDF rendering)
+- 💊 **Medicine Usage Guidance**  
+  Provides native-language instructions for prescriptions.
 
-Project Structure
+- 🔮 **Predictive Health Risk Analysis** *(WIP)*  
+  Future disease risk predictions based on lifestyle, genetics, and history.
+
+- 🔒 **Robust Backend**  
+  Secure MongoDB with TTL indexing, logging, and structured error handling.
+
+- 🎯 **SDG 3 Compliant**  
+  Empowers marginalized communities through inclusive digital health tools.
+
+---
+
+## 💻 Tech Stack
+
+| Category | Technology |
+|---------|-------------|
+| Language | Python 3.8+ |
+| Bot Framework | `python-telegram-bot` |
+| AI/ML | Google Gemini API |
+| Database | MongoDB |
+| Localization | Google Cloud Translate, Text-to-Speech |
+| Document Processing | Tesseract OCR, `pdf2image`, ReportLab |
+| HTTP Client | `httpx` |
+| Automation | `n8n` |
+| Fonts | Noto Sans Malayalam |
+
+---
+
+## 📁 Project Structure
+
+```
 AarogyaAI/
 ├── src/
 │   ├── ai_pipeline/
-│   │   └── diet_agent.py       # Diet plan generation logic
+│   │   └── diet_agent.py
 │   ├── bot/
-│   │   └── telegram_bot.py     # Telegram bot handlers
+│   │   └── telegram_bot.py
 │   ├── database/
-│   │   └── mongodb.py          # MongoDB connection and operations
+│   │   └── mongodb.py
 │   ├── input_processing/
-│   │   ├── asr.py              # Audio transcription
-│   │   ├── ocr.py              # PDF/image text extraction
-│   │   └── translation.py      # Text translation
+│   │   ├── asr.py
+│   │   ├── ocr.py
+│   │   └── translation.py
 │   ├── utils/
-│   │   ├── helpers.py          # Utility functions
-│   │   ├── pdf_generator.py    # PDF creation
+│   │   ├── helpers.py
+│   │   ├── pdf_generator.py
 │   │   └── fonts/
 │   │       └── NotoSansMalayalam-Regular.ttf
-├── temp/                       # Temporary files (PDFs, audio)
-├── .env                        # Environment variables
-├── bot.log                     # Application logs
+├── temp/                  
+├── .env                  
+├── bot.log              
 └── README.md
+```
 
-Prerequisites
+---
 
-Python 3.8+
-MongoDB (local or cloud instance)
-Google Cloud account with API keys for Gemini, Translate, and Text-to-Speech
-Tesseract OCR installed (Windows: add to PATH)
-n8n installed for workflow automation
-Conda or virtualenv for environment management
+## ⚙️ Prerequisites
 
-Setup Instructions
+- Python 3.8+
+- MongoDB (local/cloud)
+- Google Cloud account (Translate, Text-to-Speech, Gemini API keys)
+- Tesseract OCR (configured in PATH)
+- `n8n` for automation
+- Conda or virtualenv for environment management
 
-Clone the Repository:
+---
+
+## 🚀 Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
 git clone https://github.com/your-repo/aarogyaai.git
 cd aarogyaai
+```
 
+### 2. Create Environment
 
-Set Up Environment:
-
-Create and activate a virtual environment:conda create -n venv python=3.8
+```bash
+conda create -n venv python=3.8
 conda activate venv
+```
 
+### 3. Install Dependencies
 
-Install dependencies:pip install pymongo google-cloud-translate google-generativeai python-telegram-bot reportlab google-cloud-texttospeech httpx pdf2image pytesseract
+```bash
+pip install -r requirements.txt
+# OR install manually:
+pip install pymongo google-cloud-translate google-generativeai python-telegram-bot reportlab google-cloud-texttospeech httpx pdf2image pytesseract
+```
 
+### 4. Set Environment Variables
 
+Create a `.env` file:
 
-
-Configure Environment Variables:
-
-Create a .env file in the root directory:TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-GOOGLE_APPLICATION_CREDENTIALS=/path/to/your/google-credentials.json
+```dotenv
+TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+GOOGLE_APPLICATION_CREDENTIALS=/path/to/google-credentials.json
 MONGODB_URI=mongodb://localhost:27017
 GEMINI_API_KEY=your_gemini_api_key
 N8N_WEBHOOK_URL=http://localhost:5678/webhook/diet-plan-text
 DIAGNOSTIC_MODE=True
+```
 
+### 5. Install Fonts
 
-Update GOOGLE_APPLICATION_CREDENTIALS and GEMINI_API_KEY with your credentials.
+Download `NotoSansMalayalam-Regular.ttf` and place it in:
 
+```
+src/utils/fonts/
+```
 
-Set Up MongoDB:
+### 6. Configure Tesseract
 
+For Windows:
+```python
+# In src/input_processing/ocr.py
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+```
 
+### 7. Start n8n Automation Server
 
-Install Fonts:
-
-Download NotoSansMalayalam-Regular.ttf from GitHub.
-Place it in src/utils/fonts/.
-
-
-Set Up Tesseract OCR:
-
-Windows: Download from GitHub and add to PATH.
-Configure in src/input_processing/ocr.py:pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-
-
-
-
-Start n8n:
-
-Install and run n8n:npm install -g n8n
+```bash
+npm install -g n8n
 n8n start
+```
 
+Ensure workflow is live at `http://localhost:5678`.
 
-Ensure the diet_plan_text workflow is active at http://localhost:5678.
+### 8. Run the Bot
 
-
-Run the Bot:
+```bash
 python -m src.bot.telegram_bot
+```
 
+---
 
+## ✨ Usage
 
-Usage
+### Initial Setup
 
-Start Interaction:
+1. Send `/start`
+2. Choose your preferred language
+3. Provide details (Name, Age, Allergies)
 
-Send /start to select a language and complete user setup (name, age, allergies).
-Example: Select Malayalam, enter name "Haaa", age, and allergies (e.g., "None").
+---
 
+### 🤖 Commands
 
-Health Queries:
+#### 🥗 /dietplan
 
-Send voice or text queries (e.g., "തലവേദന" for headache).
-Response: Currently returns a placeholder message.
+Choose from:
+- Upload a report to extract conditions & generate diet
+- Specify a condition (e.g., "diabetic")
+- Request a general diet
 
+**Output**: A localized PDF diet plan.
 
-Diet Plan Generation:
+#### 💊 Prescription Upload
 
-Send /dietplan and choose:
-Option 1: Upload a medical report (PDF/image) to extract conditions (e.g., diabetes) and receive a personalized diet plan PDF.
-Option 2: Specify a condition (e.g., "diabetic") to get a 7-day diet plan PDF.
-Option 3: Request a general diet plan.
+Upload a prescription for medicine instructions in your language.
 
+#### 🔮 Predictive Risk (WIP)
 
-Output: A PDF (e.g., temp/Diet_Plan_5267655631.pdf) with structured tables in the user’s language (e.g., Malayalam), including culturally relevant meals.
+Input lifestyle/medical data to get a predictive risk assessment.
 
+---
 
-Medicine Instructions:
+### 🔁 Example Interaction
 
-Upload a prescription to receive localized usage instructions.
+**User**: `/dietplan`, chooses option 2, inputs "diabetic"  
+**Bot**: Returns PDF:
+```
+Title: വ്യക്തിഗത ഡയറ്റ് പ്ലാൻ
+Name: Haaa | Age: Unknown | Condition: Diabetes
 
+7-Day Plan:
+Day 1 - Breakfast: 2 ഗോതമ്പ് ദോശ, 1 കപ്പ് സാമ്പാർ
+...
+Notes: നിന്റെ ഭക്ഷണ സമയം സ്ഥിരമായി പാലിക്കുക.
+```
 
-Predictive Analysis:
+---
 
-Input lifestyle and medical data to receive health risk assessments (feature under development).
+## 🛠️ Troubleshooting
 
+### MongoDB Index Error
 
+```bash
+use aarogyaai
+db.interactions.dropIndex("user_id_1_timestamp_1")
+```
 
-Example Workflow
+### Diet Plan Issues
 
-User: Sends /dietplan, selects option 2, enters "diabetic".
-Bot: Generates a Malayalam PDF with:
-Title: "വ്യക്തിഗത ഡയറ്റ് പ്ലാൻ"
-User Info: "Name: Haaa | Age: Unknown | Condition: Diabetes"
-7-Day Plan: Tables with meals (e.g., Breakfast: "2 ഗോതമ്പ് ദോശ, 1 കപ്പ് സാമ്പാർ")
-Notes: "നിന്റെ ഭക്ഷണ സമയം സ്ഥിരമായി പാലിക്കുക."
+- Check logs:
+```bash
+type bot.log | findstr "Raw Gemini response"
+```
 
-
-
-Troubleshooting
-
-MongoDB Index Errors:
-
-Check indexes:use aarogyaai
-db.interactions.getIndexes()
-
-
-Drop conflicting indexes:db.interactions.dropIndex("user_id_1_timestamp_1")
-
-
-
-
-Invalid JSON Diet Plan:
-
-Check bot.log for Gemini API responses:type bot.log | findstr "Raw Gemini response"
-
-
-Test Gemini API:import google.generativeai as genai
+- Test Gemini manually:
+```python
+import google.generativeai as genai
 genai.configure(api_key="your_gemini_api_key")
 model = genai.GenerativeModel("gemini-1.5-pro")
-prompt = "..."
-print(model.generate_content(prompt).text)
+print(model.generate_content("...").text)
+```
 
+### OCR Debug
 
+```python
+from src.input_processing.ocr import extract_text_from_pdf
+print(extract_text_from_pdf("sample_report.pdf"))
+```
 
+---
 
-OCR Issues:
+## 🤝 Contributing
 
-Test OCR:from src.input_processing.ocr import extract_text_from_pdf
-print(extract_text_from_pdf("test_report.pdf"))
+- Fork and submit PRs for new features or bug fixes.
+- Report issues via GitHub including `bot.log` and MongoDB dumps.
 
+---
 
+## 📄 License
 
+Licensed under the **MIT License**.
 
-PDF Rendering Issues:
+---
 
-Verify NotoSansMalayalam-Regular.ttf in src/utils/fonts/.
-Check bot.log for ReportLab errors.
+## 📬 Contact
 
+For support or collaboration, email:  
+**[mohammadmishal430@gmail.com](mailto:mohammadmishal430@gmail.com)**
 
+---
 
-Contributing
-
-Fork the repository and submit pull requests for bug fixes or new features.
-Report issues via GitHub Issues, including bot.log and MongoDB outputs.
-
-License
-This project is licensed under the MIT License.
-Contact
-For inquiries, contact the development team at [mohammadmishal430@gmail.com].
+Let me know if you’d like a badge section (build status, version, license), or a shorter TL;DR version too!
